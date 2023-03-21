@@ -31,27 +31,28 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void FindElement(int[,] array, int num)
+string FindElement(int[,] array, int num)
 {
     for (int i = 0; i < array.GetLength(0); i++)
        for (int j = 0; j < array.GetLength(1); j++)
         {
             if (array[i, j] == num)
             {
-                Console.WriteLine($"{i};{j}");
-                return;
+               return $"{i + 1}{j + 1}";
             }
-            else  Console.WriteLine ("Такого элемента нет");
-            return;
+           
         }
+        return $"Такого элемента нет"; 
 }
 
 int num_row = int.Parse(Console.ReadLine()!);
 int num_column = int.Parse(Console.ReadLine()!);
 int start = int.Parse(Console.ReadLine()!);
 int stop = int.Parse(Console.ReadLine()!);
-int n = int.Parse(Console.ReadLine()!);
+
 int[,] mass = MassNums(num_row, num_column, start, stop);
 Print(mass);
-FindElement(mass, n);
+int n = int.Parse(Console.ReadLine()!);
+string result = FindElement(mass, n);
+Console.WriteLine(result);
 
